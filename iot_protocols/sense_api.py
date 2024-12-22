@@ -20,6 +20,14 @@ def current_environment():
     msg = {"deviceID": deviceID,"temp":temperature}
     return str(msg)+"\n"
 
+@app.route('/sensehat/orientation',methods=['GET'])
+def current_orientation():
+    orientation=sense.get_orientation_degrees()
+    pitch=orientation["pitch"]
+    msg = {"deviceID": deviceID,"pitch":pitch}
+    return str(msg)+"\n"
+
+
 @app.route('/sensehat/light',methods=['GET'])
 def light_get():
     #check top left pixel value(==0 - off, >0 - on) 
@@ -44,7 +52,8 @@ def light_post():
 def index():
     celcius = round(sense.temperature, 2)
     fahrenheit = round(1.8 * celcius + 32, 2)
-    return render_template('status.html', celcius=celcius, fahrenheit=fahrenheit)
+    pitch = round(sense.orientation["pitch"],2)
+    return render_template('status.html', celcius=celcius, fahrenheit=fahrenheit, pitch=pitch)
 
 
 #Run API on port 5000, set debug to True
