@@ -9,6 +9,7 @@ from door_motion import is_shaken
 GREEN = (0, 255, 0)  # RGB for green
 RED = (255, 0, 0)    # RGB for red
 BLUE = (0, 0, 255)   # blue
+YELLOW = (255, 255, 0) # yellow
 
 #initialise SenseHAT
 sense = SenseHat()
@@ -42,7 +43,7 @@ if __name__ == "__main__":
         while True:
             blynk.run()  # Process Blynk events
             temp = sense.get_temperature()
-            if temp <= 30: #temp number sensitivty has to be allowed for 
+            if temp <= 24: #temp number sensitivty has to be allowed for 
                 print("COLD")
                 sense.clear(BLUE)
                 blynk.log_event("temp_drop") # log temp drop NEEDS INDENTATATION TO WORK
@@ -53,6 +54,7 @@ if __name__ == "__main__":
             pitch = orientation["pitch"]
             if pitch > 10 and pitch <350:# pitch number sensitivty has to be allowed for 
                 print("door open")
+                sense.clear(YELLOW)
                 blynk.log_event("door_open") # simplified from original concept
             blynk.virtual_write(2, pitch) #pin 2
             #print("pitch {0} roll {1} yaw {2}".format(pitch, roll, yaw))
