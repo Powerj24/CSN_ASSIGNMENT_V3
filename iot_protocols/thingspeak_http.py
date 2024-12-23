@@ -29,7 +29,7 @@ while True:
     # Read temperature and orientation from Sense HAT
     temperature = round(sense.get_temperature(),2),
     orientation = sense.get_orientation_degrees()#
-    pitch = orientation["pitch"]#select for pitch
+    pitch = round(orientation["pitch"],2)#select for pitch
     print(f"Temperature: {temperature} C")
     print(f"pitch: {pitch} degrees")
 
