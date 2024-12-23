@@ -8,7 +8,7 @@ sense = SenseHat()
 IMAGE_PATH="./images/sensehat_image.jpg"
 
 # parse mqtt url for connection details
-URL = urlparse("mqtt://broker.emqx.io:1883/Powerj24/home/cameras/cam1")
+URL = urlparse("mqtt://broker.emqx.io:1883/pup.py/home/cameras/cam1")
 BASE_TOPIC = URL.path[1:]
 
 # MQTT event callbacks

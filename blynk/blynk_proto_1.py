@@ -39,7 +39,7 @@ if __name__ == "__main__":
         while True:
             blynk.run()  # Process Blynk events
             temp = sense.get_temperature()
-            if temp <= 30:
+            if temp <= 30: #temp number sensitivty has to be allowed for 
                 print("COLD")
                 blynk.log_event("temp_drop") # log temp drop NEEDS INDENTATATION TO WORK
             #print(temp)
@@ -47,8 +47,9 @@ if __name__ == "__main__":
             print("temp:{}".format(round(temp,2)))
             orientation = sense.get_orientation_degrees()
             pitch = orientation["pitch"]
-            if pitch > 10 and pitch <350:
+            if pitch > 10 and pitch <350:# pitch number sensitivty has to be allowed for 
                 print("door open")
+                blynk.log_event("door_open") # simplified from original concept
             blynk.virtual_write(2, pitch) #pin 2
             #print("pitch {0} roll {1} yaw {2}".format(pitch, roll, yaw))
             print("pitch: {0}".format(round(pitch,2))) #isolate the pitch                
