@@ -1,8 +1,8 @@
 import BlynkLib
 from time import sleep
 from sense_hat import SenseHat
-from capture_image import capture_image
-from upload_image import upload_image
+#from capture_image import capture_image #grey out til further need 
+#from upload_image import upload_image
 #define BLYNK_TEMPLATE_ID "TMPL4TmMpD0aa"
 #define BLYNK_TEMPLATE_NAME "Assignment 2"
 #define BLYNK_AUTH_TOKEN "rT87EeP-OeqD2BriZLKstl5lROsvZeTe"
@@ -25,10 +25,10 @@ def handle_v1_write(value):
     
     if button_value=="1":
         sense.clear(255,255,255)
-        capture_image(IMAGE_PATH)
-        result = upload_image(IMAGE_PATH)
+      #  capture_image(IMAGE_PATH) grey out till further use 
+      #  result = upload_image(IMAGE_PATH)
         
-        blynk.set_property(3,"urls",result) #updates ulrs property of widget attached to Datastream2(virtual pin V3)
+      #  blynk.set_property(3,"urls",result) #updates ulrs property of widget attached to Datastream2(virtual pin V3)
     else:
         sense.clear()
 
