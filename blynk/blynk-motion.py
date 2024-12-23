@@ -2,9 +2,7 @@ import BlynkLib
 import time
 from sense_hat import SenseHat
 from door_motion import is_shaken
-#define BLYNK_TEMPLATE_ID "TMPL4TmMpD0aa"
-#define BLYNK_TEMPLATE_NAME "Assignment 2"
-#define BLYNK_AUTH_TOKEN "rT87EeP-OeqD2BriZLKstl5lROsvZeTe"
+
 
 GREEN = (0, 255, 0)  # RGB for green
 RED = (255, 0, 0)    # RGB for red

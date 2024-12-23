@@ -1,11 +1,14 @@
-import BlynkLib ##copy of 1
+import BlynkLib
+import time
 from time import sleep
 from sense_hat import SenseHat
 from capture_image import capture_image
 from upload_image import upload_image
-#define BLYNK_TEMPLATE_ID "TMPL4TmMpD0aa"
-#define BLYNK_TEMPLATE_NAME "Assignment 2"
-#define BLYNK_AUTH_TOKEN "rT87EeP-OeqD2BriZLKstl5lROsvZeTe"
+from door_motion import is_shaken
+
+GREEN = (0, 255, 0)  # RGB for green
+RED = (255, 0, 0)    # RGB for red
+BLUE = (0, 0, 255)   # blue
 
 #initialise SenseHAT
 sense = SenseHat()
@@ -53,6 +56,14 @@ if __name__ == "__main__":
             blynk.virtual_write(2, pitch) #pin 2
             #print("pitch {0} roll {1} yaw {2}".format(pitch, roll, yaw))
             print("pitch: {0}".format(round(pitch,2))) #isolate the pitch                
-            sleep(5)  # Add a short delay to avoid high CPU usage
+            sleep(5)# Add a short delay to avoid high CPU usage
+            if is_shaken():
+                print("puppy on the move")
+                blynk.log_event("motion_event") # motion event 
+                sense.clear(RED)  # Set LEDs to red
+                blynk.virtual_write(5, 1) #pin 5 for motion
+                time.sleep(5)  # Keep red for 2 second
+                sense.clear(GREEN)  # Reset back to green
+                blynk.virtual_write(5, 0)
     except KeyboardInterrupt:
         print("Blynk application stopped.")
