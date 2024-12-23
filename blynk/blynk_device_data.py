@@ -32,17 +32,17 @@ if __name__ == "__main__":
         while True:
             blynk.run()  # Process Blynk events
             temp = sense.get_temperature()
-            if temp < 30:
-                 print("COLD")
+            if temp <= 30:
+                print("COLD")
             blynk.log_event("temp_drop") # log temp drop 
             #print(temp)
             blynk.virtual_write(0, temp) #pin 0 for temp  
-            print("temp:{}".format(temp))
+            print("temp:{}".format(round(temp)))
             orientation = sense.get_orientation_degrees()
             pitch = orientation["pitch"]
             blynk.virtual_write(2, pitch) #pin 2
             #print("pitch {0} roll {1} yaw {2}".format(pitch, roll, yaw))
-            print("pitch: {0}".format(pitch)) #isolate the pitch                
+            print("pitch: {0}".format(round(pitch))) #isolate the pitch                
             sleep(5)  # Add a short delay to avoid high CPU usage
     except KeyboardInterrupt:
         print("Blynk application stopped.")
