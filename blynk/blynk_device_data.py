@@ -32,9 +32,9 @@ if __name__ == "__main__":
         while True:
             blynk.run()  # Process Blynk events
             temp = sense.get_temperature()
-            if temp <= 30:
+            if temp <= 32:
                 print("COLD")
-            blynk.log_event("temp_drop") # log temp drop 
+                blynk.log_event("temp_drop") # log temp drop NEEDS INDENTATATION TO WORK
             #print(temp)
             blynk.virtual_write(0, temp) #pin 0 for temp  
             print("temp:{}".format(round(temp,2)))
