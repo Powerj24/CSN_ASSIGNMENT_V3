@@ -44,6 +44,7 @@ if __name__ == "__main__":
             temp = sense.get_temperature()
             if temp <= 30: #temp number sensitivty has to be allowed for 
                 print("COLD")
+                sense.clear(BLUE)
                 blynk.log_event("temp_drop") # log temp drop NEEDS INDENTATATION TO WORK
             #print(temp)
             blynk.virtual_write(0, temp) #pin 0 for temp  
