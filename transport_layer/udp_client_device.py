@@ -1,10 +1,10 @@
 import socket
 from time import sleep
-from device_data import get_device_data
+from device_data_transport import get_device_data
 
 #UDP Client configuration parameters
 serverAddressPort = ("172.236.30.12", 41234)
-deviceID = "device1"
+deviceID = "20109022"
 interval = 5
 
 # Create a UDP socket on device
