@@ -34,7 +34,7 @@ mqttc.on_connect = on_connect
 mqttc.on_publish = on_publish
 
 
-# check if useame and password in the url (there isn't in this basic example)
+# check if useame and password in the url 
 if (URL.username):
     mqttc.username_pw_set(URL.username, URL.password)
 # Connect
